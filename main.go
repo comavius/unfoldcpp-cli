@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/comavius/unfoldcpp"
@@ -45,7 +46,7 @@ func main() {
 			return
 		}
 		// stdout
-		println(code)
+		fmt.Println(code)
 	default:
 		invalidActionError()
 	}
