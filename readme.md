@@ -1,7 +1,7 @@
 # Unfoldcpp-CLI
-
-## Get started with Unfoldcpp-CLI
-This is a cli-application providing function like `g++ -E`. However, unfoldcpp only gathers included files with quotation marks like `#include "hoge.h"`.
+[日本語版](readme_ja.md)
+## Getting started with Unfoldcpp-CLI
+This is a cli-application providing function like `g++ -E`. However, unfoldcpp only gathers included files with quotation marks like `#include "hoge.h"` recursively.
 
 If you want to use, please follow this instructions.
 
