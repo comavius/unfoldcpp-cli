@@ -8,22 +8,22 @@ import (
 )
 
 func tooFewArgsError() {
-	println("Too few arguments.\nSee unfoldcppcli --help for more information.")
+	fmt.Fprintln(os.Stderr, "Too few arguments.\nSee unfoldcppcli --help for more information.")
 }
 
 func invalidActionError() {
-	println("Invalid action.\nSee unfoldcppcli --help for more information.")
+	fmt.Fprintln(os.Stderr, "Invalid action.\nSee unfoldcppcli --help for more information.")
 }
 
 func showHelp() {
-	println("unfoldcppcli is a command line interface for unfoldcpp.\nUsage: unfoldcppcli [action]\nActions:\n\thelp - show this help\n\tunfold [path] - unfold C++ code from [path] and stdout it")
+	println(os.Stderr, "unfoldcppcli is a command line interface for unfoldcpp.\nUsage: unfoldcppcli [action]\nActions:\n\thelp - show this help\n\tunfold [path] - unfold C++ code from [path] and stdout it")
 }
 
 func main() {
 	// check args
 	if len(os.Args) < 2 {
 		tooFewArgsError()
-		return
+		os.Exit(1)
 	}
 	// get type of action
 	action := os.Args[1]
@@ -35,19 +35,21 @@ func main() {
 		// check args
 		if len(os.Args) < 3 {
 			tooFewArgsError()
-			return
+			os.Exit(1)
 		}
 		// get path
 		path := os.Args[2]
 		// unfold
 		code, err := unfoldcpp.Unfold(path)
 		if err != nil {
-			println(err.Error())
-			return
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
 		}
 		// stdout
 		fmt.Println(code)
 	default:
 		invalidActionError()
+		os.Exit(1)
 	}
+	os.Exit(0)
 }
