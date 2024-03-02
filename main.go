@@ -29,7 +29,7 @@ func main() {
 	action := os.Args[1]
 	// check action
 	switch action {
-	case "help":
+	case "--help":
 		showHelp()
 	case "unfold":
 		// check args
